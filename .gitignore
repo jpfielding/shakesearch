@@ -15,6 +15,9 @@
 # production
 /build
 
+# seems to be the target from Procfile??
+/bin/
+
 # misc
 .DS_Store
 *.pem
