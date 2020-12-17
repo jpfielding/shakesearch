@@ -9,11 +9,13 @@ import (
 	"net/http"
 )
 
+// Searcher ...
 type Searcher struct {
 	CompleteWorks string
 	SuffixArray   *suffixarray.Index
 }
 
+// HandleSearch ...
 func HandleSearch(searcher Searcher) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		query, ok := r.URL.Query()["q"]
@@ -36,6 +38,7 @@ func HandleSearch(searcher Searcher) func(w http.ResponseWriter, r *http.Request
 	}
 }
 
+// Load ...
 func (s *Searcher) Load(filename string) error {
 	dat, err := ioutil.ReadFile(filename)
 	if err != nil {
@@ -46,6 +49,7 @@ func (s *Searcher) Load(filename string) error {
 	return nil
 }
 
+// Search ...
 func (s *Searcher) Search(query string) []string {
 	idxs := s.SuffixArray.Lookup([]byte(query), -1)
 	results := []string{}
