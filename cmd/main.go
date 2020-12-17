@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	react := flag.String("file", "completeworks.txt", "Complete works of Shakespeare file location")
+	works := flag.String("file", "completeworks.txt", "Complete works of Shakespeare file location")
 	port := flag.String("port", os.Getenv("PORT"), "http port")
 	flag.Parse()
 
@@ -19,8 +19,8 @@ func main() {
 		*port = "3001"
 	}
 
-	searcher := search.Searcher{}
-	err := searcher.Load(*react)
+	searcher := search.Searcher{Width: 250}
+	err := searcher.Load(*works)
 	if err != nil {
 		log.Fatal(err)
 	}

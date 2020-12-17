@@ -18,6 +18,8 @@
 # seems to be the target from Procfile??
 /bin/
 
+go.sum
+
 # misc
 .DS_Store
 *.pem
