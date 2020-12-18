@@ -19,8 +19,7 @@ func main() {
 		*port = "3001"
 	}
 
-	searcher := search.Searcher{Width: 250}
-	err := searcher.Load(*works)
+	handler, err := search.NewHandler(*works, 250)
 	if err != nil {
 		log.Fatal(err)
 	}

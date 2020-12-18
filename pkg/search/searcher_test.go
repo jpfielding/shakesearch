@@ -7,19 +7,19 @@ import (
 )
 
 func TestHamlets(t *testing.T) {
-	searcher := Searcher{Width: 10}
-	err := searcher.Load("../../completeworks.txt")
+	searcher := searcher{Width: 10}
+	err := searcher.load("../../completeworks.txt")
 	assert.Nil(t, err)
 
-	hamlets := searcher.Search("Hamlet")
+	hamlets := searcher.search("Hamlet")
 	assert.Equal(t, 111, len(hamlets))
 }
 
 func TestWhereForArtThous(t *testing.T) {
-	searcher := Searcher{Width: 10}
-	err := searcher.Load("../../completeworks.txt")
+	searcher := searcher{Width: 10}
+	err := searcher.load("../../completeworks.txt")
 	assert.Nil(t, err)
 
-	hamlets := searcher.Search("herefore art thou")
+	hamlets := searcher.search("herefore art thou")
 	assert.Equal(t, 1, len(hamlets))
 }
